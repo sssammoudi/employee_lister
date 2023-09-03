@@ -1,6 +1,6 @@
 # simple Employee Classifier WebAPP
 
-This project is a basic callback to react coding, in this project the user is able to add and delete data through a simple frontend interface in addition to easily filtering through data.
+This project is a basic callback to react coding, in this project the user is able to add and delete data, stored in a localised JSON server, through a simple frontend interface in addition to easily filtering through data.
 
 ## Available Scripts
 
