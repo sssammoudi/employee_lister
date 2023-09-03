@@ -3,16 +3,15 @@ import SearchBar from "./searchBar";
 import { useState } from 'react';
 
 function App() {
-  const [data, setData] = useState({})
+  const [filters, setFilter] = useState({})
   
-  const updateData = (SearchParams) => {
-    setData(SearchParams)
+  const updateFilter = (SearchParams) => {
+    setFilter(SearchParams)
   }
   
   return (
     <div className="App">
-      <SearchBar callback={updateData}/>  
-      <p>Name: {"name" in data ? data["name"] : "No data found"}</p>
+      <SearchBar updateSearchParams={updateFilter}/>
     </div>
   );
 }

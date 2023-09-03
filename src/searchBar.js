@@ -7,7 +7,7 @@ function SearchBar(props) {
   const [type, setType] = useState("")
   
   const btnPressed = () => {
-    props.callback({"name": "name"})
+    props.updateSearchParams({name: name, prixMin: minPrice, prixMax: maxPrice, type: type})
   }
   
   return (
@@ -22,7 +22,7 @@ function SearchBar(props) {
         <input id="min-price" type="number" value={minPrice} onChange={(e)=>{setMinPrice(e.target.value)}}/>
         <label htmlFor="type">Type: </label>
         <input id="type" type="text" value={type} onChange={(e)=>{setType(e.target.value)}}/>
-        <button type="button" onClick={btnPressed()}>Search</button>
+        <button type="button" onClick={btnPressed}>Search</button>
       </form>
     </div>
   )
