@@ -2,8 +2,7 @@
 function DisplayItem (props) {
   
   const deleteItem = (item) => {
-    console.log(item.id)
-    props.deleteItem(item.id)
+    props.deleteItem(item)
   }
   
   const showItem = (item) => {
@@ -33,6 +32,7 @@ function DisplayItem (props) {
               <th scope="col">Age</th>
               <th scope="col">Gender</th>
               <th scope="col">Type</th>
+              <th scope="col">Delete</th>
             </tr>
           </thead>
           <tbody>

@@ -2,11 +2,19 @@ import './App.css';
 import SearchBar from "./searchBar";
 import AddItem from './AddItem';
 import DisplayItem from './DisplayItem';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [filters, setFilter] = useState({})
   const [data, setData] = useState({items: []})
+  
+  useEffect (()=>{
+    fetch("http://localhost:3000/items")
+    .then((response) => response.json())
+    .then((dataJSON)=> {
+      setData({items: dataJSON})
+    });
+  }, [])
   
   const filterData = (data) => {
     const filterData = []
@@ -29,16 +37,20 @@ function App() {
     setFilter(SearchParams)
   }
   
-  const deleteItem = (id) => {
+  const deleteItem = (item) => {
     let items = data["items"]
-    console.log(items)
-    items.splice(id, 1)
-    for (const item in items) {
-      if (items[item].id > id){
-        items[item].id-=1
-      }
+    const requestoptions = {
+      method: "DELETE"
     }
-    setData({items: items})
+    fetch(`http://localhost:3000/items/${item.id}`, requestoptions)
+    .then((response)=> {
+      if (response.ok) {
+        const idx = items.indexOf(item)
+        items.splice(idx, 1)
+        setData({items: items})
+        console.log(data)
+      }
+    })
   }
   
   const addItemtoData = (item) => {
